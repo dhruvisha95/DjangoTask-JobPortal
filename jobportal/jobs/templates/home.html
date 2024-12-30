@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 70vh; background: linear-gradient(to right, #6a11cb, #2575fc); color: white;">
+    <div class="text-center">
+        <h1 class="display-4 fw-bold mb-4">Welcome to the Job Portal</h1>
+        <p class="lead mb-4">Find the job that’s right for you and take the next step in your career.</p>
+        <div>
+            <a href="{% url 'signup' %}" class="btn btn-lg btn-light me-3 shadow-lg" style="border-radius: 30px;">Sign Up</a>
+            <a href="{% url 'login' %}" class="btn btn-lg btn-outline-light shadow-lg" style="border-radius: 30px;">Login</a>
+        </div>
+    </div>
+</div>  
+{% endblock %}
