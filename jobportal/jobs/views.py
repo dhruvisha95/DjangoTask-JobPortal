@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 from django.shortcuts import render, redirect
 from .forms import CompanyRegistrationForm
@@ -69,7 +70,11 @@ def create_job(request):
 @login_required
 def job_list(request):
     jobs = JobPost.objects.filter(company=request.user.company)
-    return render(request, 'job_list.html', {'jobs': jobs})
+    paginator = Paginator(jobs, 5)  # Show 5 jobs per page.
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'job_list.html', {'jobs': page_obj})
+
 
 @login_required
 def edit_job(request, job_id):
