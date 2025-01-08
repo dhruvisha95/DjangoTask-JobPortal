@@ -145,7 +145,7 @@ def delete_job(request, job_id):
     if job.company.user == request.user:
         job.delete()
     return redirect('job_list')
-
+    
 """
 render user profile
 """
